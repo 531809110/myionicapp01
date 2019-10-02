@@ -1,6 +1,91 @@
-<div>
-<p>index works!</p>
-<img src="../../../src/assets/img/header/logo.png" alt="">
-<!-- <ion-searchbar></ion-searchbar> -->
-<app-slides></app-slides>
-</div>
+<ion-app>
+    <!-- <p>index works!</p> -->
+    <ion-header>
+        <ion-row align-items-center>
+            <ion-col size="4">
+                <ion-img src="../../assets/img/header/logo.png" alt=""></ion-img>
+            </ion-col>
+            <ion-col size="8">
+                <ion-searchbar></ion-searchbar>
+            </ion-col>
+        </ion-row>
+    </ion-header>
+    <ion-content>
+        <app-slides [slides]="carouselItems"></app-slides>
+        <ion-item>
+            <ion-img slot="start" src="../../assets/img/index/computer_icon.png"></ion-img>
+            <!-- <ion-icon name="cart" ></ion-icon> -->
+            <ion-label>首页推荐/1F</ion-label>
+        </ion-item>
+        <ion-row>
+            <ion-col size="6" *ngFor="let item of indextuijian;let i=index;">
+                <ion-card style="margin:0;">
+                    <img style="height:122px" [src]="'http://www.codeboy.com/'+item.pic">
+                    <ion-card-title class="nowrap" style="padding:5px 10px;font:18px simHei;">{{item.title}}
+                    </ion-card-title>
+                    <ion-card-subtitle class="nowrap" style="padding:5px 10px;font:12px simHei;">{{item.details}}
+                    </ion-card-subtitle>
+                    <ion-card-subtitle style="padding:0 10px;padding-top:5px;font:12px simHei;" color="primary">
+                        ￥{{item.price}}</ion-card-subtitle>
+                    <ion-button style="padding:5px 10px;margin-top: 0;font-size: 12px" color="primary" [routerLink]="'/detail/'
+                +item.pid">查看详情</ion-button>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-item>
+            <ion-img slot="start" src="../../assets/img/index/computer_icon.png"></ion-img>
+            <ion-label>最新上架/2F</ion-label>
+        </ion-item>
+        <ion-row>
+            <ion-col size="6" *ngFor="let item of indexNew;let i=index;">
+                <ion-card style="margin:0;">
+                    <img style="height:122px" [src]="'http://www.codeboy.com/'+item.pic">
+                    <ion-card-title class="nowrap" style="padding:5px 10px;font:18px simHei">{{item.title}}
+                    </ion-card-title>
+                    <ion-card-subtitle class="nowrap" style="padding:5px 10px;font:12px simHei;">{{item.details}}
+                    </ion-card-subtitle>
+                    <ion-card-subtitle style="padding:0 10px;padding-top:5px;font:12px simHei;" color="primary">
+                        ￥{{item.price}}</ion-card-subtitle>
+                    <ion-button style="padding:5px 10px;margin-top: 0;font-size: 12px" color="primary" [routerLink]="'/detail/'
+                            +item.pid">查看详情</ion-button>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-item>
+            <ion-img slot="start" src="../../assets/img/index/computer_icon.png"></ion-img>
+            <ion-label>热销单品/3F</ion-label>
+        </ion-item>
+        <ion-row>
+            <ion-col size="6" *ngFor="let item of indexHot;let i=index;">
+                <ion-card style="margin:0;">
+                    <img style="height:122px" [src]="'http://www.codeboy.com/'+item.pic">
+                    <ion-card-title class="nowrap" style="padding:5px 10px;font:18px simHei">{{item.title}}
+                    </ion-card-title>
+                    <ion-card-subtitle class="nowrap" style="padding:5px 10px;font:12px simHei;">{{item.details}}
+                    </ion-card-subtitle>
+                    <ion-card-subtitle style="padding:0 10px;padding-top:5px;font:15px simHei;" color="primary">
+                        ￥{{item.price}}</ion-card-subtitle>
+                    <ion-button style="padding:5px 10px;margin-top: 0;font-size: 12px" color="primary" [routerLink]="'/detail/'
+                            +item.pid">查看详情</ion-button>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+        <!-- <ion-footer> -->
+        <ion-row style="padding:0 20px">
+            <ion-col style="padding-left:10px">
+                <img src="../../assets/img/footer/icon1.png" alt="">
+            </ion-col>
+            <ion-col>
+                <img src="../../assets/img/footer/icon2.png" alt="">
+            </ion-col>
+            <ion-col>
+                <img src="../../assets/img/footer/icon3.png" alt="">
+            </ion-col>
+            <ion-col>
+                <img src="../../assets/img/footer/icon4.png" alt="">
+            </ion-col>
+        </ion-row>
+        <!-- </ion-footer> -->
+    </ion-content>
+</ion-app>

@@ -23,8 +23,10 @@ const routes = [
   {path:"",redirectTo:'index',pathMatch:'full'},
   {path:"index",component:IndexComponent},
   {path:"main",component:MainComponent},
-  {path:"detail/:pid",component:ProductDetailComponent},
+  {path:"detail/:lid",component:ProductDetailComponent},
   {path:"list",component:ProductListComponent},
+  {path:"login",component:UserLoginComponent},
+  {path:"cart",component:CartComponent},
   {path:"**",component:NotFoundComponent}
 ]
 
