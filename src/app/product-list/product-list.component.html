@@ -1,1 +1,36 @@
-<p>product-list works!</p>
+<ion-app>
+    <ion-header>
+        <ion-item>
+            <ion-icon name="arrow-round-back" routerLink="/index"></ion-icon>
+            <ion-searchbar></ion-searchbar>
+            <ion-label></ion-label>
+            <!-- <ion-icon name="cart"></ion-icon> -->
+        </ion-item>
+    </ion-header>
+    <ion-content>
+
+        <ion-grid>
+            <ion-row *ngFor="let item of productList;let i=index;" align-items-center>
+                <ion-item>
+                    <ion-col size="2">
+                        <ion-img [src]="'http://www.codeboy.com/'+item.pic"></ion-img>
+                    </ion-col>
+                    <ion-col size="6">
+                        <p class="nowrap" style="font-size:13px;margin: 0 0;">{{item.title}}</p>
+                        <p style="font-size:10px;margin: 0 0;color:red">{{item.price | currency:"￥"}}</p>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-row align-items-center>
+                            <ion-button style="margin-left: 5px;" color="primary" size="small">
+                                查看详情
+                            </ion-button>
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </ion-row>
+                    </ion-col>
+
+
+                </ion-item>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
+</ion-app>
