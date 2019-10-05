@@ -20,17 +20,24 @@
                         <p style="font-size:10px;margin: 0 0;color:red">{{item.price | currency:"￥"}}</p>
                     </ion-col>
                     <ion-col size="4">
-                        <ion-row align-items-center>
+                        <ion-row align-items-center [routerLink]="'/detail/'+item.lid">
                             <ion-button style="margin-left: 5px;" color="primary" size="small">
                                 查看详情
                             </ion-button>
                             <ion-icon name="arrow-forward"></ion-icon>
                         </ion-row>
                     </ion-col>
-
-
                 </ion-item>
             </ion-row>
         </ion-grid>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+          <ion-row justify-content-center style="background-color:#9cbfff;">
+          <ion-label *ngIf="bottomtext" style="color:snow;padding:8px 0;">没有更多数据了</ion-label>
+        </ion-row>
     </ion-content>
 </ion-app>

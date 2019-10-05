@@ -2,9 +2,10 @@
     <!-- <p>product-detail works!</p> -->
     <ion-header>
         <ion-item>
-            <ion-icon name="arrow-round-back" routerLink="/index"></ion-icon>
+            <ion-icon name="arrow-round-back" (click)="jump()"></ion-icon>
             <ion-label style="padding-left: 10px;">商品详情</ion-label>
             <ion-icon name="cart"></ion-icon>
+            <ion-badge *ngIf="count>0" style="margin-bottom:15px;">{{count}}</ion-badge>
         </ion-item>
     </ion-header>
     <ion-content padding>
@@ -19,8 +20,8 @@
             </ion-card-subtitle>
             <ion-item>
                 <ion-label color="danger" style="font-size:25px;">{{details.price | currency:"￥"}}</ion-label>
-                <ion-button style="margin-left: 5px;" color="danger" size="large">
-                    <ion-icon slot="start" name="cart"></ion-icon>
+                <ion-button style="margin-left: 5px;" color="danger" size="large" (click)="addcart()">
+                    <ion-icon slot="start" name="cart" ></ion-icon>
                     添加到购物车
                     <ion-label> </ion-label>
                 </ion-button>

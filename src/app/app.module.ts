@@ -18,6 +18,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SlidesComponent } from './slides/slides.component';
+import { FormsModule } from '@angular/forms';
+import { AddcartComponent } from './addcart/addcart.component';
+import { MoneyPipe } from './money.pipe';
 
 const routes = [
   {path:"",redirectTo:'index',pathMatch:'full'},
@@ -40,13 +43,16 @@ const routes = [
     CartComponent,
     UserLoginComponent,
     NotFoundComponent,
-    SlidesComponent
+    SlidesComponent,
+    AddcartComponent,
+    MoneyPipe
   ],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

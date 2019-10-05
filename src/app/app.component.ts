@@ -17,6 +17,9 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
+  // f5(){
+  //   location.reload();;
+  // }
 
   initializeApp() {
     this.platform.ready().then(() => {

@@ -1,0 +1,20 @@
+/* 超出行宽不出省略号 */
+.nowrap{
+    white-space:nowrap;
+    overflow: hidden; 
+    /* text-overflow: ellipsis; */
+    /* word-break: break-all; */
+}
+/* 超出行宽出省略号 */
+.nowrap1{
+    white-space:nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    /* word-break: break-all; */
+}
+
+/* 下划线 */
+
+ion-grid > ion-row:not(:last-child){
+border-bottom: 1px solid #ccc;
+}

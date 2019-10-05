@@ -1,1 +1,54 @@
-<p>user-login works!</p>
+<ion-content>
+    <!-- 第一部分：登录界面 -->
+    <div *ngIf="!isLogin">
+        <ion-item>
+            <ion-icon name="arrow-round-back" (click)="jump()"></ion-icon>
+            <ion-label style="padding-left: 10px;">用户登录</ion-label>
+        </ion-item>
+        <ion-card>
+            <ion-item>
+                <ion-label>用户名：</ion-label>
+                <ion-input [(ngModel)]="uname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>密码：</ion-label>
+                <ion-input [(ngModel)]="upwd"></ion-input>
+            </ion-item>
+            <ion-button color="primary" expand="full" (click)="loadLogin()">登录</ion-button>
+            <!-- <ion-item> -->
+            <ion-label *ngIf="isError" color="danger">用户名或密码错误</ion-label>
+            <ion-label *ngIf="isNull" color="danger">用户名或密码为空</ion-label>
+            <!-- </ion-item> -->
+        </ion-card>
+        <div padding>
+            <p>其它方式登录</p>
+            <ion-row>
+                <ion-col>
+                    <ion-icon name="logo-angular" color="danger" size="large"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    <ion-icon name="logo-nodejs" color="warning" size="large"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    <ion-icon name="logo-npm" color="success" size="large"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    <ion-icon name="logo-github" color="primary" size="large"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    <ion-icon name="logo-twitter" color="secondary" size="large"></ion-icon>
+                </ion-col>
+                <ion-col>
+                    <ion-icon name="logo-html5" color="tertiary" size="large"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+    <!-- 第二部分：用户中心界面 -->
+    <div *ngIf="isLogin">
+        <p>
+            用户中心
+        </p>
+        <ion-button (click)="quit()">注销</ion-button>
+    </div>
+</ion-content>
