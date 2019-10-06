@@ -13,9 +13,17 @@ import {
 })
 export class CartComponent implements OnInit {
   private cartList: object[];
+  private localCount:number;
   constructor(private http: HttpClient) {}
-  reduce() {}
-  add() {}
+  reduce(i) {
+    this.cartList[i]['count']--;
+    if(this.cartList[i]['count']==0){this.cartList.splice(i,1)}
+    console.log(this.cartList);
+  }
+  add(i) {
+    this.cartList[i]['count']++;
+    console.log(this.cartList);
+  }
   loadcart() {
     let uid = JSON.parse(localStorage.getItem('uid'));
     console.log(uid);
