@@ -8,6 +8,7 @@ import {
 import {
   ActivatedRoute,Router
 } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -27,13 +28,35 @@ export class ProductDetailComponent implements OnInit {
   //产品图片列表，提取中图---用于轮播图
   private carouselItems: object[] = [];
   private detailImgs = [];
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {};
+  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router,public toastController: ToastController) {};
+  // 添加购物车时，如果没有登录，提示请先登录
+  async loginToast() {
+    const toast = await this.toastController.create({
+      message: '请先登录',
+      duration: 500,
+      // position:"middle"
+    });
+    toast.present();
+  }
+   // 添加购物车时，已登录，添加成功时提示添加成功
+  async addToast() {
+    const toast = await this.toastController.create({
+      message: '成功添加到购物车',
+      duration: 500,
+      // position:"middle"
+    });
+    toast.present();
+  }
   addcart(){
     let uid=JSON.parse(localStorage.getItem('uid'));
     console.log("66666"+uid);
+    // 如果没有登录（uid=""），提示登录
+if(!uid){this.loginToast()}
     let url=`http://127.0.0.1:8080/addcart?lid=${this.details['lid']}&title=${this.details['title']}&subtitle=${this.details['subtitle']}&price=${this.details['price']}&uid=${uid}`;
     this.http.get(url).subscribe((res:any)=>{
       console.log(res);
+      if(res.code==1){
+      this.addToast();}
     });
   }
   // addcart(){

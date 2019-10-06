@@ -45,7 +45,7 @@ const routes = [
     NotFoundComponent,
     SlidesComponent,
     AddcartComponent,
-    MoneyPipe
+    MoneyPipe,
   ],
   entryComponents: [],
   imports: [
