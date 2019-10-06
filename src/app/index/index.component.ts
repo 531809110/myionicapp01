@@ -25,7 +25,7 @@ loadIndex(){
     this.indexNew=res.recommendedItems;
     this.indexHot=res.topSaleItems;
     this.carouselItems=res.carouselItems;
-    console.log(this.carouselItems);
+    // console.log(this.carouselItems);
   })
 }
 //初始化时，调用异步请求函数

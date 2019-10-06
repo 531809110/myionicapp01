@@ -30,16 +30,16 @@ export class UserLoginComponent implements OnInit {
     window.history.go(-1);
   }
   loadLogin() {
-    console.log(this.uname)
-    console.log(this.upwd)
+    // console.log(this.uname)
+    // console.log(this.upwd)
     if (this.uname == "" || this.upwd == "") {
       this.isError = false;
       this.isNull = true;
-      console.log("并没有登录")
-      console.log(this.isNull)
+      // console.log("并没有登录")
+      // console.log(this.isNull)
       return;
     }
-    let url = `http://127.0.0.1:8080/login?uname=${this.uname}&upwd=${this.upwd}`;
+    let url = `http://47.94.227.93:8080/login?uname=${this.uname}&upwd=${this.upwd}`;
     // let url='http://127.0.0.1:8080/login?uname=tom&upwd=123';
     this.http.get(url).subscribe(res => {
       // 登录成功，显示用户中心，隐藏登录。

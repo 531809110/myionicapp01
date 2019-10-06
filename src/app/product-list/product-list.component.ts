@@ -20,7 +20,7 @@ private bottomtext:boolean=false;
   loadData(event) {
     this.loadList();
     setTimeout(() => {
-      console.log('Done');
+      // console.log('Done');
       event.target.complete();
       if (this.newList.length == 0) {
         event.target.disabled = true;
@@ -35,7 +35,7 @@ loadList(){
   this.http.get(url).subscribe((res:any)=>{
     this.newList=res.data;
     this.productList=this.productList.concat(this.newList);
-    console.log(this.productList);
+    // console.log(this.productList);
   })
 }
 // toggleInfiniteScroll() {

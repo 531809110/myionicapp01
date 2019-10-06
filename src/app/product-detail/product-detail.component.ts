@@ -49,12 +49,12 @@ export class ProductDetailComponent implements OnInit {
   }
   addcart(){
     let uid=JSON.parse(localStorage.getItem('uid'));
-    console.log("66666"+uid);
+    // console.log("66666"+uid);
     // 如果没有登录（uid=""），提示登录
 if(!uid){this.loginToast()}
-    let url=`http://127.0.0.1:8080/addcart?lid=${this.details['lid']}&title=${this.details['title']}&subtitle=${this.details['subtitle']}&price=${this.details['price']}&uid=${uid}`;
+    let url=`http://47.94.227.93:8080/addcart?lid=${this.details['lid']}&title=${this.details['title']}&subtitle=${this.details['subtitle']}&price=${this.details['price']}&uid=${uid}`;
     this.http.get(url).subscribe((res:any)=>{
-      console.log(res);
+      // console.log(res);
       if(res.code==1){
       this.addToast();}
     });
@@ -70,7 +70,7 @@ if(!uid){this.loginToast()}
   loadDetail() {
     let url = `http://www.codeboy.com/data/product/details.php?lid=${this.lid}`;
     this.http.get(url).subscribe((res: any) => {
-      console.log(res)
+      // console.log(res)
       this.details = res["details"];
       this.picList = res["details"]["picList"];
       //数据库传回的是一段HTML代码的字符串，无法直接使用，使用正则抠出图片src地址
@@ -90,7 +90,7 @@ if(!uid){this.loginToast()}
       // console.log(this.details["details"]);
       // console.log(this.carouselItems);
       // console.log(this.fname);
-      console.log(this.detailImgs);
+      // console.log(this.detailImgs);
     })
   }
   ngOnInit() {

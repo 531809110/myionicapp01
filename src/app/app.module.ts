@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MainComponent } from './main/main.component';
 import { IndexComponent } from './index/index.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -25,7 +24,6 @@ import { MoneyPipe } from './money.pipe';
 const routes = [
   {path:"",redirectTo:'index',pathMatch:'full'},
   {path:"index",component:IndexComponent},
-  {path:"main",component:MainComponent},
   {path:"detail/:lid",component:ProductDetailComponent},
   {path:"list",component:ProductListComponent},
   {path:"login",component:UserLoginComponent},
@@ -36,7 +34,6 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     IndexComponent,
     ProductListComponent,
     ProductDetailComponent,
@@ -57,7 +54,8 @@ const routes = [
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    // { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
