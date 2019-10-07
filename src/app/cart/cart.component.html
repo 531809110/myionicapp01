@@ -44,8 +44,9 @@
   </ion-card>
   <!-- <ion-grid></ion-grid> -->
   <ion-row >
-      <ion-label ngIf="!uid" >你尚未登陆</ion-label>
-    <ion-col ngIf="uid" size="5" offset="7">
+      <ion-label *ngIf="!loginStatus" >你尚未登陆</ion-label>
+      <ion-label *ngIf="loginStatus&&cartVoid" >购物车是空的</ion-label>
+    <ion-col *ngIf="loginStatus&&(!cartVoid)" size="5" offset="7">
   <ion-button expand="block" color="success">去结算</ion-button>
 </ion-col>
 </ion-row>
