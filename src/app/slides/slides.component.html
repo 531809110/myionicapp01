@@ -1,5 +1,5 @@
 <div>
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true" [options]="slideOpts" #myAd>
     <ion-slide *ngFor="let slide of slides;let i=index">
       <!-- <h1>Slide {{i}}</h1> -->
       <img [src]="'http://www.codeboy.com/'+slide.img" alt="">
