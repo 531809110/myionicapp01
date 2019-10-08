@@ -7,7 +7,7 @@
   </ion-header>
 <ion-content>
   <ion-card>
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row class="ion-align-items-center" *ngFor="let item of cartList;let i=index;">
           <ion-col size="4">
             <ion-row>
@@ -40,9 +40,18 @@
             </ion-row>
           </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
+    <ion-item *ngFor="let item of cartList;let i=index;">
+        <ion-label style="width:30%">
+          <h3>{{item.title}}</h3>
+          <p>{{item.subtitle}}</p>
+        </ion-label>
+        <ion-label style="color:red;width:30%;text-align: center;">{{item.price | money}}</ion-label>
+        <ion-button style="width:10%" strong=true fill="outline" (click)="reduce(i)">-</ion-button>
+        <ion-input type="textarea" style="width:10%;text-align: center" [(ngModel)]="item.count" readonly></ion-input>
+        <ion-button style="width:10%" strong=true (click)="add(i)">+</ion-button>
+      </ion-item>
   </ion-card>
-  <!-- <ion-grid></ion-grid> -->
   <ion-row >
       <ion-label *ngIf="!loginStatus" >你尚未登陆</ion-label>
       <ion-label *ngIf="loginStatus&&cartVoid" >购物车是空的</ion-label>
