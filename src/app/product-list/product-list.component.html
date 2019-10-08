@@ -43,10 +43,15 @@
             <ion-icon color="medium" name="arrow-forward" [routerLink]="'/detail/'+item.lid"></ion-icon>
           </ion-item>
 
-        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+          <!-- 设置滚动条距离底部临界点：100px; -->
+          <!-- 到临界点了，触发ionInfinite事件 -->
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" #myScroll>
+            <!-- 加载中提示信息 -->
+            <!-- 加载时显示菊花 -->
+            <!-- 加载中提示文字 -->
             <ion-infinite-scroll-content
               loadingSpinner="bubbles"
-              loadingText="Loading more data...">
+              loadingText="加载中...">
             </ion-infinite-scroll-content>
           </ion-infinite-scroll>
           <ion-row class="ion-justify-content-center" style="background-color:#9cbfff;">
