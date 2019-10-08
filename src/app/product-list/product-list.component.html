@@ -8,7 +8,7 @@
         </ion-item>
     </ion-header>
     <ion-content>
-
+<!-- 
         <ion-grid>
             <ion-row *ngFor="let item of productList;let i=index;" class="ion-align-items-center">
                 <ion-item>
@@ -29,7 +29,20 @@
                     </ion-col>
                 </ion-item>
             </ion-row>
-        </ion-grid>
+        </ion-grid> -->
+
+        <ion-item *ngFor="let item of productList;let i=index;">
+            <ion-thumbnail>
+              <img [src]="'http://www.codeboy.com/'+item.pic">
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{item.title}}</h2>
+              <p style="color:red">{{item.price | currency:"￥"}}</p>
+            </ion-label>
+            <ion-button [routerLink]="'/detail/'+item.lid">查看详情</ion-button>
+            <ion-icon color="medium" name="arrow-forward" [routerLink]="'/detail/'+item.lid"></ion-icon>
+          </ion-item>
+
         <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
             <ion-infinite-scroll-content
               loadingSpinner="bubbles"
