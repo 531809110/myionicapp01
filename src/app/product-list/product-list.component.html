@@ -31,7 +31,7 @@
             </ion-row>
         </ion-grid> -->
 
-        <ion-item *ngFor="let item of productList;let i=index;">
+        <ion-item *ngFor="let item of productList;let i=index;" detail="true" [routerLink]="'/detail/'+item.lid">
             <ion-thumbnail>
               <img [src]="'http://www.codeboy.com/'+item.pic">
             </ion-thumbnail>
@@ -39,8 +39,8 @@
               <h2>{{item.title}}</h2>
               <p style="color:red">{{item.price | currency:"￥"}}</p>
             </ion-label>
-            <ion-button [routerLink]="'/detail/'+item.lid">查看详情</ion-button>
-            <ion-icon color="medium" name="arrow-forward" [routerLink]="'/detail/'+item.lid"></ion-icon>
+            <ion-button>查看详情</ion-button>
+            <!-- <ion-icon color="medium" name="arrow-forward" [routerLink]="'/detail/'+item.lid"></ion-icon> -->
           </ion-item>
 
           <!-- 设置滚动条距离底部临界点：100px; -->
