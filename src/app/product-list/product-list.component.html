@@ -1,8 +1,8 @@
 <ion-app>
     <ion-header>
         <ion-item>
-            <ion-icon name="arrow-round-back" routerLink="/index"></ion-icon>
-            <ion-searchbar></ion-searchbar>
+            <ion-icon name="arrow-round-back" (click)="jump()"></ion-icon>
+            <ion-searchbar (ionChange)="search()" [(ngModel)]="searchText"></ion-searchbar>
             <ion-label></ion-label>
             <!-- <ion-icon name="cart"></ion-icon> -->
         </ion-item>
