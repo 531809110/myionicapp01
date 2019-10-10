@@ -39,22 +39,47 @@ export class UserLoginComponent implements OnInit {
       // console.log(this.isNull)
       return;
     }
-    let url = `http://47.94.227.93:8080/login?uname=${this.uname}&upwd=${this.upwd}`;
-    // let url='http://127.0.0.1:8080/login?uname=tom&upwd=123';
-    this.http.get(url).subscribe(res => {
-      // 登录成功，显示用户中心，隐藏登录。
-      //localStorage增加isLogin属性，储存登录状态。localStorage增加uid属性，储存用户id
-      if (res['code'] == 1) {
-        this.isError = false;
-        this.isNull = false;
-        localStorage.setItem('isLogin',JSON.stringify(true));
-        localStorage.setItem('uid',JSON.stringify(res['uid']));
-        this.isLogin = JSON.parse(localStorage.getItem('isLogin'));
-      } else {
-        this.isError = true;
-        this.isNull = false;
+    //get方法异步请求数据
+    // let url = `http://47.94.227.93:8080/login?uname=${this.uname}&upwd=${this.upwd}`;
+    // // let url='http://127.0.0.1:8080/login?uname=tom&upwd=123';
+    // this.http.get(url).subscribe(res => {
+    //   // 登录成功，显示用户中心，隐藏登录。
+    //   //localStorage增加isLogin属性，储存登录状态。localStorage增加uid属性，储存用户id
+    //   if (res['code'] == 1) {
+    //     this.isError = false;
+    //     this.isNull = false;
+    //     localStorage.setItem('isLogin',JSON.stringify(true));
+    //     localStorage.setItem('uid',JSON.stringify(res['uid']));
+    //     this.isLogin = JSON.parse(localStorage.getItem('isLogin'));
+    //   } else {
+    //     this.isError = true;
+    //     this.isNull = false;
+    //   }
+    // })
+    //post方法异步请求数据
+    let url = 'http://www.codeboy.com/data/user/login.php';
+    let body=`uname=${this.uname}&upwd=${this.upwd}`;
+    let options={
+      headers:{
+        "Content-Type":"application/x-www-form-urlencoded"
       }
-    })
+    };
+    this.http.post(url,body,options).subscribe(
+      res => {
+        // console.log(res);
+          // 登录成功，显示用户中心，隐藏登录。
+          //localStorage增加isLogin属性，储存登录状态。localStorage增加uid属性，储存用户id
+          if (res['code'] == 200) {
+            this.isError = false;
+            this.isNull = false;
+            localStorage.setItem('isLogin',JSON.stringify(true));
+            localStorage.setItem('uid',JSON.stringify(res['uid']));
+            this.isLogin = JSON.parse(localStorage.getItem('isLogin'));
+          } else {
+            this.isError = true;
+            this.isNull = false;
+          }
+        })
   }
   ngOnInit() {
     this.isLogin = JSON.parse(localStorage.getItem('isLogin'));
